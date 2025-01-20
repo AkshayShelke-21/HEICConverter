@@ -1,12 +1,34 @@
 import { useState } from 'react'
-import { MantineProvider, Container, Title, Text, Stack, Button, rem, Paper } from '@mantine/core'
+import { MantineProvider, Container, Title, Text, Stack, Button, rem, Paper, Group } from '@mantine/core'
 import { Dropzone } from '@mantine/dropzone'
-import { IconUpload, IconPhoto, IconX } from '@tabler/icons-react'
+import { IconUpload, IconPhoto, IconX, IconLogout } from '@tabler/icons-react'
 import heic2any from 'heic2any'
+import { AuthProvider, useAuth } from './contexts/AuthContext'
+import AuthPage from './components/AuthPage'
 
-function App() {
+function ConverterApp() {
+  const { currentUser, logout } = useAuth();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [files, setFiles] = useState([])
   const [converting, setConverting] = useState(false)
+
+  const handleLogout = async () => {
+    try {
+      setIsLoggingOut(true);
+      await logout();
+      setFiles([]);
+      setConverting(false);
+      window.location.reload();
+    } catch (error) {
+      console.error('Logout error:', error);
+    } finally {
+      setIsLoggingOut(false);
+    }
+  };
+
+  if (!currentUser) {
+    return <AuthPage />;
+  }
 
   const handleDrop = (droppedFiles) => {
     setFiles(droppedFiles)
@@ -39,9 +61,22 @@ function App() {
   }
 
   return (
-    <MantineProvider>
-      <Container size="sm" py="xl">
-        <Paper shadow="sm" p="xl" radius="lg" className="animate-fade-in">
+    <>
+      <div style={{ position: 'fixed', top: 0, right: 0, zIndex: 1000, padding: '10px 24px' }}>        
+        <Button 
+          variant="subtle" 
+          color="red" 
+          loading={isLoggingOut}
+          onClick={handleLogout}
+          leftIcon={<IconLogout size={18} />}
+          style={{ transition: 'all 0.2s ease' }}
+          size="sm"
+        >
+          {isLoggingOut ? 'Signing out...' : 'Sign Out'}
+        </Button>
+      </div>
+      <Container size="sm" py="xl" style={{ marginTop: '4rem' }}>
+        <Paper shadow="sm" p="xl" radius="lg" className="animate-fade-in">          
           <Stack spacing="xl">
             <div>
               <Title order={1} align="center" className="animate-fade-in">HEIC to JPG Converter!</Title>
@@ -115,8 +150,18 @@ function App() {
           </Stack>
         </Paper>
       </Container>
-    </MantineProvider>
+    </>
   )
+}
+
+function App() {
+  return (
+    <MantineProvider withNormalizeCSS>
+      <AuthProvider>
+        <ConverterApp />
+      </AuthProvider>
+    </MantineProvider>
+  );
 }
 
 export default App
