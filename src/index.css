@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  color: #1A1B1E;
+  background-color: #F8F9FA;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #F8F9FA;
+}
+
+.mantine-Button-root {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  color: black;
+  border: 2px solid black;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  padding: 12px 32px;
+  border-radius: 12px;
+}
+
+.mantine-Button-root:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: #f8f9fa;
+}
+
+.mantine-Title-root {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #1A1B1E;
+  font-size: 2.75rem;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #1A1B1E 0%, #2C2E33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mantine-Text-root {
+  letter-spacing: -0.01em;
+  color: #868E96;
+}
+
+.mantine-Dropzone-root {
+  border: 2px dashed #DEE2E6;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mantine-Dropzone-root:hover {
+  background-color: #F8F9FA;
+  border-color: #228be6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.mantine-Dropzone-root[data-accept] {
+  border-color: #40C057;
+  background-color: rgba(64, 192, 87, 0.05);
+}
+
+.mantine-Dropzone-root[data-reject] {
+  border-color: #FA5252;
+  background-color: rgba(250, 82, 82, 0.05);
+}
+
+.mantine-Container-root {
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+
+.file-list {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.mantine-Progress-root {
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mantine-Dropzone-root {
+  border: 2px dashed #ced4da;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.mantine-Dropzone-root:hover {
+  background-color: #f8f9fa;
+  border-color: #228be6;
+}
+
+.mantine-Dropzone-root[data-accept] {
+  border-color: #40C057;
+  background-color: rgba(64, 192, 87, 0.1);
+}
+
+.mantine-Dropzone-root[data-reject] {
+  border-color: #FA5252;
+  background-color: rgba(250, 82, 82, 0.1);
+}
+
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #000000;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
